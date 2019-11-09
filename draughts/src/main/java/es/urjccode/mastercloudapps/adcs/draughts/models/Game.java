@@ -73,5 +73,4 @@ public class Game {
 		return this.board.getDimension();
 	}
 
-	
 }

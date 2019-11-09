@@ -9,7 +9,7 @@ import es.urjccode.mastercloudapps.adcs.draughts.models.StateValue;
 
 public class StartControllerTest {
 
-     @Test
+    @Test
     public void givenStartControllerWhenStartGameThenChangeState() {
         Session session = new Session();
         StartController startController = new StartController(session);

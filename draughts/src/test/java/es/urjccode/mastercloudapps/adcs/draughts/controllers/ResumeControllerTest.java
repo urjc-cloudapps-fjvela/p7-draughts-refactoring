@@ -11,7 +11,7 @@ public class ResumeControllerTest {
 
     @Test
     public void givenResumeControllerWhenResumeGameMoveToInitialStateRequiereCorrectThenNotError() {
-        Session session= new Session();
+        Session session = new Session();
         ResumeController resumeController = new ResumeController(session);
         assertEquals(StateValue.INITIAL, session.getValueState());
         resumeController.next();
@@ -24,7 +24,7 @@ public class ResumeControllerTest {
 
     @Test(expected = AssertionError.class)
     public void givenResumeControllerWhenResumeGameMoveOutThenError() {
-        Session session= new Session();
+        Session session = new Session();
         ResumeController resumeController = new ResumeController(session);
         assertEquals(StateValue.INITIAL, session.getValueState());
         resumeController.next();

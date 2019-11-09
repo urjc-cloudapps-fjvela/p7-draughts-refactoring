@@ -4,7 +4,7 @@ public class Piece {
 
 	private Color color;
 
-	Piece(Color color){
+	Piece(Color color) {
 		this.color = color;
 	}
 
@@ -18,10 +18,10 @@ public class Piece {
 
 	public boolean isAdvanced(Coordinate origin, Coordinate target) {
 		int difference = origin.getRow() - target.getRow();
-		if (color == Color.WHITE){
-			return difference>0;
+		if (color == Color.WHITE) {
+			return difference > 0;
 		}
-		return difference<0;
+		return difference < 0;
 	}
 
 }

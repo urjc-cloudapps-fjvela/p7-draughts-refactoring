@@ -31,9 +31,9 @@ public class ResumeViewTest {
     public void initMocks() {
         MockitoAnnotations.initMocks(this);
     }
-    
+
     @Test
-    public void testInteract(){
+    public void testInteract() {
         when(yesNoDialog.read(anyString())).thenReturn(true);
         resumeView.interact(resumeController);
         verify(resumeController).reset();

@@ -8,9 +8,6 @@ import es.urjccode.mastercloudapps.adcs.draughts.models.AllModelTest;
 import es.urjccode.mastercloudapps.adcs.draughts.views.AllViewTest;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ 
-    AllModelTest.class, 
-    AllControllerTest.class, 
-    AllViewTest.class } )
+@Suite.SuiteClasses({ AllModelTest.class, AllControllerTest.class, AllViewTest.class })
 public final class AllTest {
 }

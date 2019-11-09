@@ -4,25 +4,25 @@ class Turn {
 
     private Color color;
 
-    Turn(){
+    Turn() {
         this.color = Color.WHITE;
     }
 
-    void change(){
-        this.color = Color.values()[(this.color.ordinal()+1)%2];
+    void change() {
+        this.color = Color.values()[(this.color.ordinal() + 1) % 2];
     }
 
     public Color getColor() {
-		return this.color;
+        return this.color;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.color.name();
     }
 
-	public boolean isColor(Color color2) {
-		return false;
-	}
+    public boolean isColor(Color color2) {
+        return false;
+    }
 
 }

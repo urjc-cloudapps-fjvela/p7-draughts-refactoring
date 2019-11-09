@@ -21,15 +21,15 @@ class Square {
         return this.piece;
     }
 
-	public boolean isEmpty() {
-		return this.piece == null;
-	}
+    public boolean isEmpty() {
+        return this.piece == null;
+    }
 
-	public Color getColor() {
-        if (piece == null){
+    public Color getColor() {
+        if (piece == null) {
             return null;
         }
-		return this.piece.getColor();
-	}
+        return this.piece.getColor();
+    }
 
 }

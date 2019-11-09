@@ -5,16 +5,16 @@ import es.urjccode.mastercloudapps.adcs.draughts.models.Session;
 public class StartController extends Controller {
 
 	public StartController(Session session) {
-        super(session);
+		super(session);
 	}
 
-    @Override
+	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
 		controllersVisitor.visit(this);
-    }
+	}
 
 	public void start() {
-        this.session.next();
+		this.session.next();
 	}
-    
+
 }

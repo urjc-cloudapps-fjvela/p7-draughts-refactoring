@@ -6,13 +6,13 @@ import es.urjccode.mastercloudapps.adcs.draughts.models.Session;
 
 public abstract class Controller {
 
-    protected Session session;
+	protected Session session;
 
-    protected Controller(Session session) {
+	protected Controller(Session session) {
 		this.session = session;
-    }
+	}
 
-    public Color getColor(Coordinate coordinate) {
+	public Color getColor(Coordinate coordinate) {
 		return this.session.getColor(coordinate);
 	}
 
@@ -21,5 +21,5 @@ public abstract class Controller {
 	}
 
 	abstract public void accept(ControllersVisitor controllersVisitor);
-    
+
 }
