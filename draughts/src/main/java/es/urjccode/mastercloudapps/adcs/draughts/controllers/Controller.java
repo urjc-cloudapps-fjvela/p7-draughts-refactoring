@@ -20,6 +20,6 @@ public abstract class Controller {
 		return this.session.getDimension();
 	}
 
-	abstract public void accept(ControllersVisitor controllersVisitor);
+	 public abstract void accept(ControllersVisitor controllersVisitor);
 
 }

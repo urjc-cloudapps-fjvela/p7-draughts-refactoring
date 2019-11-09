@@ -18,7 +18,7 @@ class Square {
     }
 
     Piece getPiece() {
-        return this.piece;
+        return this.piece == null ? new PieceNull(null) : piece;
     }
 
     public boolean isEmpty() {
@@ -26,10 +26,7 @@ class Square {
     }
 
     public Color getColor() {
-        if (piece == null) {
-            return null;
-        }
-        return this.piece.getColor();
+        return piece == null ? null : piece.getColor();
     }
 
 }

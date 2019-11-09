@@ -1,5 +1,6 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
+
 public class Piece {
 
 	private Color color;
@@ -23,6 +24,10 @@ public class Piece {
 		}
 		return difference < 0;
 	}
+
+	public boolean isNull() {
+        return false;
+    }
 
 	@Override
 	public String toString() {

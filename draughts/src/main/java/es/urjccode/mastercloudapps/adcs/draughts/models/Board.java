@@ -74,7 +74,7 @@ class Board {
             result.append(" ");
             for (int j = 0; j < Board.DIMENSION; j++) {
                 Piece piece = getPiece(new Coordinate(i, j));
-                result.append(piece == null ? " " : piece.toString());
+                result.append(piece.toString());
             }
             result.append(" ");
             result.append(String.valueOf(i));

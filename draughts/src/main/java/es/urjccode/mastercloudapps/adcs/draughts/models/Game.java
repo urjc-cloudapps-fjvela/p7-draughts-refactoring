@@ -1,5 +1,6 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
+
 public class Game {
 
 	private final static int START_ROW_INITIAL_BLACKS = 0;
@@ -45,7 +46,7 @@ public class Game {
 		}
 		if (origin.diagonalDistance(target) == 2) {
 			Coordinate between = origin.betweenDiagonal(target);
-			if (this.board.getPiece(between) == null) {
+			if (this.board.getPiece(between).isNull()) {
 				return Error.EATING_EMPTY;
 			}
 			this.board.remove(between);
