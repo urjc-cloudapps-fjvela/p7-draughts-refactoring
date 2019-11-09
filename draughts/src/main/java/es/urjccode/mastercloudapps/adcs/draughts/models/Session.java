@@ -2,9 +2,9 @@ package es.urjccode.mastercloudapps.adcs.draughts.models;
 
 public class Session {
 
-	private State state;
+	public State state;
 
-	private Game game;
+	public Game game;
 
 	public Session() {
 		this.state = new State();
@@ -15,36 +15,36 @@ public class Session {
 		return this.state.getValueState();
 	}
 
-	public void next() {
-		this.state.next();
-	}
+	// public void next() {
+	// 	this.state.next();
+	// }
 
-	public void reset() {
-		this.state.reset();
-	}
+	// public void reset() {
+	// 	this.state.reset();
+	// }
 
-	public Error move(Coordinate origin, Coordinate target) {
-		return this.game.move(origin, target);
-	}
+	// public Error move(Coordinate origin, Coordinate target) {
+	// 	return this.game.move(origin, target);
+	// }
 
-	public Piece getPiece(Coordinate coordinate) {
-		return this.game.getPiece(coordinate);
-	}
+	// public Piece getPiece(Coordinate coordinate) {
+	// 	return this.game.getPiece(coordinate);
+	// }
 
-	public Color getColor() {
-		return this.game.getColor();
-	}
+	// public Color getColor() {
+	// 	return this.game.getColor();
+	// }
 
-	public Color getColor(Coordinate coordinate) {
-		return this.game.getColor(coordinate);
-	}
+	// public Color getColor(Coordinate coordinate) {
+	// 	return this.game.getColor(coordinate);
+	// }
 
-	public boolean isBlocked() {
-		return this.game.isBlocked();
-	}
+	// public boolean isBlocked() {
+	// 	return this.game.isBlocked();
+	// }
 
-	public int getDimension() {
-		return this.game.getDimension();
-	}
+	// public int getDimension() {
+	// 	return this.game.getDimension();
+	// }
 
 }
