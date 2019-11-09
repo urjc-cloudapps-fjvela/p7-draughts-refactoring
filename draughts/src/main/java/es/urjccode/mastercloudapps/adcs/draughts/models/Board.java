@@ -16,21 +16,7 @@ class Board {
                 this.squares[i][j] = new Square();
             }
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < Board.DIMENSION; j++) {
-                if (new Coordinate(i, j).isBackgroundColorBlack()) {
-                    put(new Coordinate(i, j), new Piece(Color.BLACK));
-                }
-            }
-        }
-        for (int i = 5; i < Board.DIMENSION; i++) {
-            for (int j = 0; j < Board.DIMENSION; j++) {
-                if (new Coordinate(i, j).isBackgroundColorBlack()) {
-                    put(new Coordinate(i, j), new Piece(Color.WHITE));
 
-                }
-            }
-        }
     }
 
     public void move(Coordinate origin, Coordinate target) {
@@ -58,6 +44,11 @@ class Board {
             }
         }
         return pieces;
+    }
+
+    public void put(Coordinate target, Piece piece) {
+        assert checkCoordinate(target);
+        this.squares[target.getRow()][target.getColumn()].put(piece);
     }
 
     boolean isEmpty(Coordinate coordinate) {
@@ -97,11 +88,6 @@ class Board {
             result.append(String.valueOf(j));
         }
         result.append("\n");
-    }
-
-    private void put(Coordinate target, Piece piece) {
-        assert checkCoordinate(target);
-        this.squares[target.getRow()][target.getColumn()].put(piece);
     }
 
     private Square getSquare(Coordinate coordinate) {

@@ -2,6 +2,11 @@ package es.urjccode.mastercloudapps.adcs.draughts.models;
 
 public class Game {
 
+	private final static int START_ROW_INITIAL_BLACKS = 0;
+	private final static int END_ROW_INITIAL_BLACKS = 3;
+	private final static int START_ROW_INITIAL_WHITES = 5;
+	private final static int END_ROW_INITIAL_WHITES = Board.DIMENSION;
+
 	private Board board;
 
 	private Turn turn;
@@ -9,7 +14,9 @@ public class Game {
 	public Game() {
 		this.board = new Board();
 		this.turn = new Turn();
+		initPieces();
 	}
+
 
 	public Error move(Coordinate origin, Coordinate target) {
 		assert origin != null && target != null;
@@ -72,5 +79,21 @@ public class Game {
 	public int getDimension() {
 		return this.board.getDimension();
 	}
+
+	private void initPieces() {
+		initPieces(START_ROW_INITIAL_BLACKS, END_ROW_INITIAL_BLACKS, Color.BLACK);
+		initPieces(START_ROW_INITIAL_WHITES, END_ROW_INITIAL_WHITES, Color.WHITE);
+	}
+
+	private void initPieces(int startRowInitial, int endRowInitial, Color colorToInit) {
+		for (int i = startRowInitial; i < endRowInitial; i++) {
+			for (int j = 0; j < Board.DIMENSION; j++) {
+				if (new Coordinate(i, j).isBackgroundColorBlack()) {
+					board.put(new Coordinate(i, j), new Piece(colorToInit));
+				}
+			}
+		}
+	}
+
 
 }
