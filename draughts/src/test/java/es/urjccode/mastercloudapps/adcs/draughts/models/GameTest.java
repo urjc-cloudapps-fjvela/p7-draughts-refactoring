@@ -27,7 +27,7 @@ public class GameTest {
 
         checkInitialPositions(startRowForCheckInititalPosition(0), endRowForCheckInititalPosition(3),
                 colorForCheckInitialPosition(Color.BLACK));
-        checkInitialPositions(startRowForCheckInititalPosition(5), endRowForCheckInititalPosition(Board.DIMENSION),
+        checkInitialPositions(startRowForCheckInititalPosition(5), endRowForCheckInititalPosition(game.getDimension()),
                 colorForCheckInitialPosition(Color.WHITE));
     }
 
@@ -47,7 +47,7 @@ public class GameTest {
         Coordinate coordinate;
         Color color;
         for (int i = startRow; i < endRow; i++) {
-            for (int j = 0; j < Board.DIMENSION; j++) {
+            for (int j = 0; j < game.getDimension(); j++) {
                 coordinate = new Coordinate(i, j);
                 color = game.getColor(coordinate);
                 if (coordinate.isBackgroundColorBlack()) {

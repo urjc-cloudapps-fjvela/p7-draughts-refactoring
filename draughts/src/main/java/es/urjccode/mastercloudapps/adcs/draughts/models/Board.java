@@ -5,7 +5,7 @@ import java.util.List;
 
 class Board {
 
-    static final int DIMENSION = 8;
+    private static final int DIMENSION = 8;
 
     private Square[][] squares;
 

@@ -6,7 +6,7 @@ public class Game {
 	private final static int START_ROW_INITIAL_BLACKS = 0;
 	private final static int END_ROW_INITIAL_BLACKS = 3;
 	private final static int START_ROW_INITIAL_WHITES = 5;
-	private final static int END_ROW_INITIAL_WHITES = Board.DIMENSION;
+	
 
 	private Board board;
 
@@ -83,18 +83,16 @@ public class Game {
 
 	private void initPieces() {
 		initPieces(START_ROW_INITIAL_BLACKS, END_ROW_INITIAL_BLACKS, Color.BLACK);
-		initPieces(START_ROW_INITIAL_WHITES, END_ROW_INITIAL_WHITES, Color.WHITE);
+		initPieces(START_ROW_INITIAL_WHITES, board.getDimension(), Color.WHITE);
 	}
 
 	private void initPieces(int startRowInitial, int endRowInitial, Color colorToInit) {
 		for (int i = startRowInitial; i < endRowInitial; i++) {
-			for (int j = 0; j < Board.DIMENSION; j++) {
+			for (int j = 0; j < board.getDimension(); j++) {
 				if (new Coordinate(i, j).isBackgroundColorBlack()) {
 					board.put(new Coordinate(i, j), new Piece(colorToInit));
 				}
 			}
 		}
 	}
-
-
 }
