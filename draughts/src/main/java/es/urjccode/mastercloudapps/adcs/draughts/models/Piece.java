@@ -1,6 +1,5 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
-
 public class Piece {
 
 	private Color color;
@@ -13,11 +12,11 @@ public class Piece {
 		return this.color;
 	}
 
-	public boolean isBlack() {
+	boolean isBlack() {
 		return this.color == Color.BLACK;
 	}
 
-	public boolean isAdvanced(Coordinate origin, Coordinate target) {
+	boolean isAdvanced(Coordinate origin, Coordinate target) {
 		int difference = origin.getRow() - target.getRow();
 		if (color == Color.WHITE) {
 			return difference > 0;
@@ -25,9 +24,9 @@ public class Piece {
 		return difference < 0;
 	}
 
-	public boolean isNull() {
-        return false;
-    }
+	boolean isNull() {
+		return false;
+	}
 
 	@Override
 	public String toString() {

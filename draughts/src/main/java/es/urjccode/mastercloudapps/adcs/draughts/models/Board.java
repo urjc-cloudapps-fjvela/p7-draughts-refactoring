@@ -19,24 +19,24 @@ class Board {
 
     }
 
-    public void move(Coordinate origin, Coordinate target) {
+    void move(Coordinate origin, Coordinate target) {
         put(target, remove(origin));
     }
 
-    public Piece remove(Coordinate coordinate) {
+    Piece remove(Coordinate coordinate) {
         assert this.getPiece(coordinate) != null;
         return getSquare(coordinate).remove();
     }
 
-    public Color getColor(Coordinate coordinate) {
+    Color getColor(Coordinate coordinate) {
         return getSquare(coordinate).getColor();
     }
 
-    public Piece getPiece(Coordinate coordinate) {
+    Piece getPiece(Coordinate coordinate) {
         return getSquare(coordinate).getPiece();
     }
 
-    public List<Piece> getPieces(Color color) {
+    List<Piece> getPieces(Color color) {
         List<Piece> pieces = new ArrayList<Piece>();
         Piece piece;
 
@@ -48,11 +48,11 @@ class Board {
                 }
             }
         }
-        
+
         return pieces;
     }
 
-    public void put(Coordinate target, Piece piece) {
+    void put(Coordinate target, Piece piece) {
         assert checkCoordinate(target);
         this.squares[target.getRow()][target.getColumn()].put(piece);
     }
@@ -61,7 +61,7 @@ class Board {
         return getSquare(coordinate).isEmpty();
     }
 
-    public int getDimension() {
+    int getDimension() {
         return Board.DIMENSION;
     }
 
