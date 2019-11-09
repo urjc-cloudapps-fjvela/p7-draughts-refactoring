@@ -23,9 +23,40 @@ public class GameTest {
     }
 
     @Test
-    public void testGivenGameWhenConstructThenInitialDistribution() {
-        assertEquals(Color.WHITE, game.getColor(new Coordinate(5, 0)));
-        assertEquals(Color.BLACK, game.getColor(new Coordinate(2, 1)));
+    public void testGivenNewGameThenInitialPositionsAreOk() {
+
+        checkInitialPositions(startRowForCheckInititalPosition(0), endRowForCheckInititalPosition(3),
+                colorForCheckInitialPosition(Color.BLACK));
+        checkInitialPositions(startRowForCheckInititalPosition(5), endRowForCheckInititalPosition(Board.DIMENSION),
+                colorForCheckInitialPosition(Color.WHITE));
+    }
+
+    private int startRowForCheckInititalPosition(int value) {
+        return value;
+    }
+
+    private int endRowForCheckInititalPosition(int value) {
+        return value;
+    }
+
+    private Color colorForCheckInitialPosition(Color color) {
+        return color;
+    }
+
+    private void checkInitialPositions(int startRow, int endRow, Color colorToCheck) {
+        Coordinate coordinate;
+        Color color;
+        for (int i = startRow; i < endRow; i++) {
+            for (int j = 0; j < Board.DIMENSION; j++) {
+                coordinate = new Coordinate(i, j);
+                color = game.getColor(coordinate);
+                if (coordinate.isBackgroundColorBlack()) {
+                    assertEquals(colorToCheck, color);
+                } else {
+                    assertNull(color);
+                }
+            }
+        }
     }
 
     @Test()

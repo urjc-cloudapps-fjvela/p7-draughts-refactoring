@@ -18,7 +18,7 @@ public class BoardTest {
             for (int j = 0; j < Board.DIMENSION; j++) {
                 Coordinate coordinate = new Coordinate(i, j);
                 Color color = board.getColor(coordinate);
-                if (coordinate.isBlack()) {
+                if (coordinate.isBackgroundColorBlack()) {
                     assertEquals(Color.BLACK, color);
                 } else {
                     assertNull(color);
@@ -29,7 +29,7 @@ public class BoardTest {
             for (int j = 0; j < Board.DIMENSION; j++) {
                 Coordinate coordinate = new Coordinate(i, j);
                 Color color = board.getColor(coordinate);
-                if (coordinate.isBlack()) {
+                if (coordinate.isBackgroundColorBlack()) {
                     assertEquals(Color.WHITE, color);
                 } else {
                     assertNull(color);

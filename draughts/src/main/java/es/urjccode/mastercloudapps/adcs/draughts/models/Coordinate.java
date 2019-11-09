@@ -44,7 +44,7 @@ public class Coordinate {
         return new Coordinate(this.row + rowShift, this.column + columnShift);
     }
 
-    public boolean isBlack() {
+    public boolean isBackgroundColorBlack() {
         assert this.isValid();
         return (this.row + this.column) % 2 != 0;
     }
