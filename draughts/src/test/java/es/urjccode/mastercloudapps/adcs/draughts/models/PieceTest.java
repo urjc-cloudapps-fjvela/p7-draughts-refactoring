@@ -9,15 +9,15 @@ public class PieceTest {
 
     @Test
     public void testGivenPieceWhenIsAdvancedThenTrue() {
-        assertTrue(new Piece(Color.WHITE).isAdvanced(new Coordinate(5, 0), new Coordinate(4, 1)));
-        assertTrue(new Piece(Color.BLACK).isAdvanced(new Coordinate(2, 1), new Coordinate(3, 2)));
+        assertTrue(new Piece(Color.WHITE).canMove(new Coordinate(5, 0), new Coordinate(4, 1)) == null);
+        assertTrue(new Piece(Color.BLACK).canMove(new Coordinate(2, 1), new Coordinate(3, 2)) == null);
     }
 
     @Test
     public void testGivenPieceWhenNotIsAdvancedThenFalse() {
-        assertFalse(new Piece(Color.WHITE).isAdvanced(new Coordinate(5, 0), new Coordinate(6, 1)));
-        assertFalse(new Piece(Color.WHITE).isAdvanced(new Coordinate(5, 0), new Coordinate(5, 2)));
-        assertFalse(new Piece(Color.BLACK).isAdvanced(new Coordinate(2, 1), new Coordinate(2, 3)));
-        assertFalse(new Piece(Color.BLACK).isAdvanced(new Coordinate(2, 1), new Coordinate(1, 2)));
+        assertTrue(new Piece(Color.WHITE).canMove(new Coordinate(5, 0), new Coordinate(6, 1)) != null);
+        assertTrue(new Piece(Color.WHITE).canMove(new Coordinate(5, 0), new Coordinate(5, 2)) != null);
+        assertTrue(new Piece(Color.BLACK).canMove(new Coordinate(2, 1), new Coordinate(2, 3)) != null);
+        assertTrue(new Piece(Color.BLACK).canMove(new Coordinate(2, 1), new Coordinate(1, 2)) != null);
     }
 }

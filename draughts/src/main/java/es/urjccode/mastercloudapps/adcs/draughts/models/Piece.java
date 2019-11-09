@@ -1,11 +1,9 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
-public class Piece {
-
-	private Color color;
+public class Piece extends PieceBase {
 
 	Piece(Color color) {
-		this.color = color;
+		super(color);
 	}
 
 	public Color getColor() {
@@ -16,14 +14,6 @@ public class Piece {
 		return this.color == Color.BLACK;
 	}
 
-	boolean isAdvanced(Coordinate origin, Coordinate target) {
-		int difference = origin.getRow() - target.getRow();
-		if (color == Color.WHITE) {
-			return difference > 0;
-		}
-		return difference < 0;
-	}
-
 	boolean isNull() {
 		return false;
 	}
@@ -32,5 +22,24 @@ public class Piece {
 	public String toString() {
 		return color.name().substring(0, 1);
 	}
+
+	@Override
+	public Error canMove(Coordinate origin, Coordinate target) {
+		if (!isAdvanced(origin, target)) {
+			return Error.NOT_ADVANCED;
+		}
+
+		return null;
+	}
+
+	
+	private boolean isAdvanced(Coordinate origin, Coordinate target) {
+		int difference = origin.getRow() - target.getRow();
+		if (color == Color.WHITE) {
+			return difference > 0;
+		}
+		return difference < 0;
+	}
+
 
 }

@@ -12,7 +12,7 @@ public class PieceNull extends Piece {
     }
 
     @Override
-    boolean isAdvanced(Coordinate origin, Coordinate target) {
-        return false;
+    public Error canMove(Coordinate origin, Coordinate target) {
+        return Error.PIECE_NOT_VALID;
     }
 }

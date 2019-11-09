@@ -17,6 +17,10 @@ public class Coordinate {
                 && column <= Coordinate.UPPER_LIMIT;
     }
 
+    public Error canMove() {
+        return null;
+    }
+
     boolean isDiagonal(Coordinate coordinate) {
         assert coordinate != null && coordinate.isValid();
         assert this.isValid();

@@ -24,25 +24,12 @@ public class Game {
 		if (!origin.isValid() || !target.isValid()) {
 			return Error.OUT_COORDINATE;
 		}
-		if (board.isEmpty(origin)) {
-			return Error.EMPTY_ORIGIN;
-		}
-		Color color = this.board.getColor(origin);
-		if (this.turn.getColor() != color) {
-			return Error.OPPOSITE_PIECE;
-		}
 		if (!origin.isDiagonal(target)) {
 			return Error.NOT_DIAGONAL;
 		}
-		Piece piece = this.board.getPiece(origin);
-		if (!piece.isAdvanced(origin, target)) {
-			return Error.NOT_ADVANCED;
-		}
+		
 		if (origin.diagonalDistance(target) >= 3) {
 			return Error.BAD_DISTANCE;
-		}
-		if (!this.board.isEmpty(target)) {
-			return Error.NOT_EMPTY_TARGET;
 		}
 		if (origin.diagonalDistance(target) == 2) {
 			Coordinate between = origin.betweenDiagonal(target);
@@ -51,6 +38,19 @@ public class Game {
 			}
 			this.board.remove(between);
 		}
+	
+		if (board.isEmpty(origin)) {
+			return Error.EMPTY_ORIGIN;
+		}
+		Color color = this.board.getColor(origin);
+		if (this.turn.getColor() != color) {
+			return Error.OPPOSITE_PIECE;
+		}
+
+		if (!this.board.isEmpty(target)) {
+			return Error.NOT_EMPTY_TARGET;
+		}
+
 		this.board.move(origin, target);
 		this.turn.change();
 		return null;

@@ -14,11 +14,16 @@ public class PlayController extends Controller {
 	}
 
 	public Error move(Coordinate origin, Coordinate target) {
-		Error error = game.move(origin, target);
-		if (game.isBlocked()) {
-			state.next();
+		Error result = null;
+
+		Piece piece = game.getPiece(origin);
+		if (piece != null && (result = piece.canMove(origin, target)) == null) {
+			result = game.move(origin, target);
+			if (game.isBlocked()) {
+				state.next();
+			}
 		}
-		return error;
+		return result;
 	}
 
 	public Piece getPiece(Coordinate coordinate) {
