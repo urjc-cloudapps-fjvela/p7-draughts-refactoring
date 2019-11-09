@@ -19,14 +19,15 @@ class Board {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < Board.DIMENSION; j++) {
                 if (new Coordinate(i, j).isBlack()) {
-                    this.squares[i][j].put(new Piece(Color.BLACK));
+                    put(new Coordinate(i, j), new Piece(Color.BLACK));
                 }
             }
         }
         for (int i = 5; i < Board.DIMENSION; i++) {
             for (int j = 0; j < Board.DIMENSION; j++) {
                 if (new Coordinate(i, j).isBlack()) {
-                    this.squares[i][j].put(new Piece(Color.WHITE));
+                    put(new Coordinate(i, j), new Piece(Color.WHITE));
+
                 }
             }
         }
@@ -34,8 +35,9 @@ class Board {
 
     public void move(Coordinate origin, Coordinate target) {
         Piece piece = this.squares[origin.getRow()][origin.getColumn()].remove();
-        this.squares[target.getRow()][target.getColumn()].put(piece);
+        put(target, piece);
     }
+
 
     public void remove(Coordinate coordinate) {
         assert coordinate != null;
@@ -58,16 +60,16 @@ class Board {
                 pieces.add(this.squares[i][j].getPiece());
             }
         }
-		return pieces;
-	}
+        return pieces;
+    }
 
     boolean isEmpty(Coordinate coordinate) {
         return this.squares[coordinate.getRow()][coordinate.getColumn()].isEmpty();
     }
-    
+
     public int getDimension() {
-		return Board.DIMENSION;
-	}
+        return Board.DIMENSION;
+    }
 
     @Override
     public String toString() {
@@ -95,6 +97,11 @@ class Board {
             string += j;
         }
         return string;
+    }
+
+    
+    private void put(Coordinate target, Piece piece) {
+        this.squares[target.getRow()][target.getColumn()].put(piece);
     }
 
 }
