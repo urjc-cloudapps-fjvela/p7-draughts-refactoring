@@ -1,10 +1,10 @@
 package es.urjccode.mastercloudapps.adcs.draughts.controllers;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
-
 
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -28,6 +28,13 @@ public class PlayControllerTest {
         assertNotNull(pieceTarget);
         assertEquals(pieceTarget.getColor(), Color.WHITE);
     }
+
+    @Test
+    public void givenPlayControlllerWhenNewGameThenBoardIsNotBlocked() {
+        PlayController playController = new PlayController(new Session());
+        assertFalse(playController.isBlocked());
+    }
+
 
     // public void data(){
     // Coordinate[][] coordinates = new Coordinate[][] {

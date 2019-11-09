@@ -38,11 +38,17 @@ class Board {
 
     public List<Piece> getPieces(Color color) {
         List<Piece> pieces = new ArrayList<Piece>();
+        Piece piece;
+
         for (int i = 0; i < Board.DIMENSION; i++) {
             for (int j = 0; j < Board.DIMENSION; j++) {
-                pieces.add(this.squares[i][j].getPiece());
+                piece = getPiece(new Coordinate(i, j));
+                if (!piece.isNull() && piece.getColor() == color) {
+                    pieces.add(piece);
+                }
             }
         }
+        
         return pieces;
     }
 
