@@ -34,14 +34,13 @@ class Board {
     }
 
     public void move(Coordinate origin, Coordinate target) {
-        Piece piece = getSquare(origin).remove();
-        put(target, piece);
+        put(target, remove(origin));
     }
 
-    public void remove(Coordinate coordinate) {
+    public Piece remove(Coordinate coordinate) {
         assert coordinate != null;
         assert this.getPiece(coordinate) != null;
-        getSquare(coordinate).remove();
+        return getSquare(coordinate).remove();
     }
 
     public Color getColor(Coordinate coordinate) {
