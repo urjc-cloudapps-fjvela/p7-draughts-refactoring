@@ -38,7 +38,6 @@ class Board {
     }
 
     public Piece remove(Coordinate coordinate) {
-        assert coordinate != null;
         assert this.getPiece(coordinate) != null;
         return getSquare(coordinate).remove();
     }
@@ -98,11 +97,17 @@ class Board {
     }
 
     private void put(Coordinate target, Piece piece) {
+        assert checkCoordinate(target);
         this.squares[target.getRow()][target.getColumn()].put(piece);
     }
 
     private Square getSquare(Coordinate coordinate) {
+        assert checkCoordinate(coordinate);
         return squares[coordinate.getRow()][coordinate.getColumn()];
+    }
+
+    private boolean checkCoordinate(Coordinate coordinate) {
+        return  coordinate != null && coordinate.isValid();
     }
 
 }
