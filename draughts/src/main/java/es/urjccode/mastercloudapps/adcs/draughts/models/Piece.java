@@ -24,4 +24,9 @@ public class Piece {
 		return difference < 0;
 	}
 
+	@Override
+	public String toString() {
+		return color.name().substring(0, 1);
+	}
+
 }

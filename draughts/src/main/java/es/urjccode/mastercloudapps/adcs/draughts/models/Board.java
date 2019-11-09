@@ -70,30 +70,33 @@ class Board {
 
     @Override
     public String toString() {
-        String string = " ";
-        for (int j = 0; j < Board.DIMENSION; j++) {
-            string += j;
-        }
-        string += "\n";
+        StringBuilder result = new StringBuilder();
+        toStringHorizontalDimension(result);
+        toStringVerticalDimension(result);
+        toStringHorizontalDimension(result);
+        return result.toString();
+    }
+
+    private void toStringVerticalDimension(StringBuilder result) {
         for (int i = 0; i < Board.DIMENSION; i++) {
-            string += i;
+            result.append(String.valueOf(i));
+            result.append(" ");
             for (int j = 0; j < Board.DIMENSION; j++) {
-                Piece piece = this.squares[i][j].getPiece();
-                if (piece == null) {
-                    string += " ";
-                } else if (piece.isBlack()) {
-                    string += "n";
-                } else {
-                    string += "b";
-                }
+                Piece piece = getPiece(new Coordinate(i, j));
+                result.append(piece == null ? " " : piece.toString());
             }
-            string += i + "\n";
+            result.append(" ");
+            result.append(String.valueOf(i));
+            result.append("\n");
         }
-        string += " ";
+    }
+
+    private void toStringHorizontalDimension(StringBuilder result) {
+        result.append("  ");
         for (int j = 0; j < Board.DIMENSION; j++) {
-            string += j;
+            result.append(String.valueOf(j));
         }
-        return string;
+        result.append("\n");
     }
 
     private void put(Coordinate target, Piece piece) {
@@ -107,7 +110,7 @@ class Board {
     }
 
     private boolean checkCoordinate(Coordinate coordinate) {
-        return  coordinate != null && coordinate.isValid();
+        return coordinate != null && coordinate.isValid();
     }
 
 }
