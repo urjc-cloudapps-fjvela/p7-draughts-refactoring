@@ -7,12 +7,17 @@ public class PieceNull extends Piece {
     }
 
     @Override
-    boolean isNull() {
+    public boolean isNull() {
         return true;
     }
 
     @Override
     public Error canMove(Coordinate origin, Coordinate target) {
         return Error.PIECE_NOT_VALID;
+    }
+
+    @Override
+    public String toString() {
+        return " ";
     }
 }

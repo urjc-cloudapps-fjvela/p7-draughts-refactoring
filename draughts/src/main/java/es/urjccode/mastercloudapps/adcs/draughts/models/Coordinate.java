@@ -17,7 +17,17 @@ public class Coordinate {
                 && column <= Coordinate.UPPER_LIMIT;
     }
 
-    public Error canMove() {
+    public Error canMove(Coordinate target) {
+        if (!isValid() || !isValid()) {
+            return Error.OUT_COORDINATE;
+        }
+        if (!isDiagonal(target)) {
+            return Error.NOT_DIAGONAL;
+        }
+
+        if (diagonalDistance(target) >= 3) {
+            return Error.BAD_DISTANCE;
+        }
         return null;
     }
 

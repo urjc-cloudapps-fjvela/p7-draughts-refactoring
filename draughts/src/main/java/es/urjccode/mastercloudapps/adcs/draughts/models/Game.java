@@ -1,13 +1,10 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
-
 public class Game {
 
 	private final static int START_ROW_INITIAL_BLACKS = 0;
 	private final static int END_ROW_INITIAL_BLACKS = 3;
 	private final static int START_ROW_INITIAL_WHITES = 5;
-	
-
 	private Board board;
 
 	private Turn turn;
@@ -18,19 +15,10 @@ public class Game {
 		initPieces();
 	}
 
-
 	public Error move(Coordinate origin, Coordinate target) {
 		assert origin != null && target != null;
-		if (!origin.isValid() || !target.isValid()) {
-			return Error.OUT_COORDINATE;
-		}
-		if (!origin.isDiagonal(target)) {
-			return Error.NOT_DIAGONAL;
-		}
-		
-		if (origin.diagonalDistance(target) >= 3) {
-			return Error.BAD_DISTANCE;
-		}
+		Error error;
+
 		if (origin.diagonalDistance(target) == 2) {
 			Coordinate between = origin.betweenDiagonal(target);
 			if (this.board.getPiece(between).isNull()) {
@@ -38,17 +26,10 @@ public class Game {
 			}
 			this.board.remove(between);
 		}
-	
-		if (board.isEmpty(origin)) {
-			return Error.EMPTY_ORIGIN;
-		}
-		Color color = this.board.getColor(origin);
-		if (this.turn.getColor() != color) {
-			return Error.OPPOSITE_PIECE;
-		}
 
-		if (!this.board.isEmpty(target)) {
-			return Error.NOT_EMPTY_TARGET;
+		error = board.canMove(origin, target);
+		if (error != null) {
+			return error;
 		}
 
 		this.board.move(origin, target);
@@ -58,6 +39,10 @@ public class Game {
 
 	public Color getColor(Coordinate coordinate) {
 		return this.board.getColor(coordinate);
+	}
+
+	public Error isTurnValid(Coordinate origin) {
+		return turn.isTurnValid(board.getColor(origin));
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class Piece extends PieceBase {
 		return this.color == Color.BLACK;
 	}
 
-	boolean isNull() {
+	public boolean isNull() {
 		return false;
 	}
 
@@ -32,7 +32,6 @@ public class Piece extends PieceBase {
 		return null;
 	}
 
-	
 	private boolean isAdvanced(Coordinate origin, Coordinate target) {
 		int difference = origin.getRow() - target.getRow();
 		if (color == Color.WHITE) {
@@ -40,6 +39,5 @@ public class Piece extends PieceBase {
 		}
 		return difference < 0;
 	}
-
 
 }

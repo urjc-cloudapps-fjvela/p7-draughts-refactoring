@@ -21,8 +21,15 @@ class Turn {
         return this.color.name();
     }
 
-    boolean isColor(Color color2) {
-        return false;
+    Error isTurnValid(Color colorToCheck) {
+        if (colorToCheck == null) {
+            return Error.OUT_COORDINATE;
+        }
+        
+        if (getColor() != colorToCheck) {
+            return Error.OPPOSITE_PIECE;
+        }
+        return null;
     }
 
 }

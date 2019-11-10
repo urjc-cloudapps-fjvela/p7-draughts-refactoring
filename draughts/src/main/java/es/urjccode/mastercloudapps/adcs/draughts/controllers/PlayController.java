@@ -14,16 +14,31 @@ public class PlayController extends Controller {
 	}
 
 	public Error move(Coordinate origin, Coordinate target) {
-		Error result = null;
+		//TODO: I don't like this. check patterns for next refactoring
+		Error result = game.isTurnValid(origin);
+		if (result == null) {
+			result = canMovePiece(origin, target);
 
-		Piece piece = game.getPiece(origin);
-		if (piece != null && (result = piece.canMove(origin, target)) == null) {
-			result = game.move(origin, target);
-			if (game.isBlocked()) {
-				state.next();
+			if (result == null) {
+				result = canMoveToTarget(origin, target);
+				if (result == null) {
+					result = game.move(origin, target);
+					if (game.isBlocked()) {
+						state.next();
+					}
+				}
 			}
 		}
 		return result;
+	}
+
+	private Error canMovePiece(Coordinate origin, Coordinate target) {
+		Piece piece = game.getPiece(origin);
+		return piece == null ? Error.PIECE_NOT_VALID : piece.canMove(origin, target);
+	}
+
+	private Error canMoveToTarget(Coordinate origin, Coordinate target) {
+		return origin.canMove(target);
 	}
 
 	public Piece getPiece(Coordinate coordinate) {

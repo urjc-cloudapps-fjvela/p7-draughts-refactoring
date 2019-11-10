@@ -65,6 +65,16 @@ class Board {
         return Board.DIMENSION;
     }
 
+    Error canMove(Coordinate origin, Coordinate target) {
+        if (isEmpty(origin)) {
+            return Error.EMPTY_ORIGIN;
+        }
+        if (!isEmpty(target)) {
+            return Error.NOT_EMPTY_TARGET;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
